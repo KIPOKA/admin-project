@@ -1,5 +1,5 @@
-from django.shortcuts import render
-
+from django.shortcuts import render, redirect
+from django.urls import reverse
 from . import models
 # Create your views here.
 def list(request):
@@ -7,6 +7,23 @@ def list(request):
     context = {'all_cars':all_cars}
     return render(request,'car/list.html', context=context)
 def delete(request):
-    return render(request,'car/delete.html')
+    if request.POST:
+        pk = request.POST['pk']
+        try:
+            models.Car.objects.get(pk=pk).delete()
+            return redirect(reverse('car:list'))
+        except:
+            print('Primary key not found')
+            return redirect(reverse('car:list'))
+    else:
+        return render(request,'car/delete.html')
 def add(request):
+    print(request.POST)
+    if request.POST:
+        brand = request.POST['brand']
+        year = int(request.POST['year'])
+        models.Car.objects.create(brand=brand, year=year)
+        return redirect(reverse('car:list'))
+    else: 
+        return render(request,'car/add.html')
     return render(request,'car/add.html')

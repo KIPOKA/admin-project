@@ -15,8 +15,9 @@ class Migration(migrations.Migration):
             name='Car',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('brand', models.TextField()),
                 ('year', models.CharField(max_length=30)),
-                ('brand', models.IntegerField()),
+                
             ],
         ),
     ]

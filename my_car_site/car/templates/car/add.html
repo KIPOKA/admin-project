@@ -1,4 +1,25 @@
 {% extends "base.html" %}
 {% block content%}
-<h1>Add.html</h1>
-{% endblock%}
+<div class="container">
+    <h1>ADD.HTML</h1>
+    <h2>Add a new car to the database</h2>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="brand">Brand of Car: </label>
+            <input class="form-control" type="text" id="brand" name="brand" placeholder="Your brand" required>
+        </div>
+        <div class="form-group">
+            <label for="year">Year: </label>
+            <input class="form-control" type="text" id="year" name="year" placeholder="Year's car" required>
+        </div>
+        <div class="form-group">
+            <label for=""></label>
+            <input class="btn btn-primary" type="submit" value="Add Car">
+        </div>
+           
+
+    </form>
+</div>
+
+{% endblock %}

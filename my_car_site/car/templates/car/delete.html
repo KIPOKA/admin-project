@@ -1,4 +1,19 @@
 {% extends "base.html" %}
 {% block content%}
-<h1>Add.html</h1>
+
+<div class="container">
+<h2>Delete a car from the database</h2>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="pk">Primary Key tyo delete car </label>
+            <input class="form-control" type="text" id="pk" name="pk" placeholder="Your primary key" required>
+        </div>
+        <div class="form-group">
+            <label for=""></label>
+            <input class="btn btn-primary" type="submit" value="Add Car">
+        </div> 
+    </form>
+
+</div>
 {% endblock%}
